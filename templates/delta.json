@@ -1,0 +1,70 @@
+{
+  "chapter": 1,
+  "summary": "本章三句话：谁的状态变了 / 哪个伏笔动了 / 哪条冲突推进了",
+  "facts": [
+    {
+      "id": "F1",
+      "subj": "张三",
+      "pred": "住在",
+      "obj": "回迁房二十七楼",
+      "cardinality": "single",
+      "canon_status": "canon",
+      "visible_from_volume": 1,
+      "source_ch": 1,
+      "evidence": "原文里能证明这一点的那句话",
+      "supersedes": []
+    }
+  ],
+  "facts_retire": [
+    {
+      "id": "F0",
+      "until_ch": 0,
+      "reason": "为什么它不再为真"
+    }
+  ],
+  "foreshadow": [
+    {
+      "id": "X1",
+      "op": "plant",
+      "content": "门槛下压着一封没拆的信",
+      "payoff_window": [3, 8],
+      "payoff_signal": "回收时读者应该看到什么（没有信号的伏笔不许立项）"
+    },
+    {
+      "id": "X2",
+      "op": "payoff",
+      "evidence": "正文里谁拿到了什么证据"
+    }
+  ],
+  "characters": [
+    {
+      "id": "char_id",
+      "name": "角色名",
+      "state": {
+        "location": "新位置",
+        "goal": "本章结束时的目标",
+        "conditions": ["右手僵（第 3 章起，持续线索）"]
+      },
+      "known": [
+        {
+          "fact_id": "F1",
+          "learned_in_ch": 1,
+          "how": "他亲眼看见门牌号"
+        }
+      ],
+      "misbeliefs": [
+        {
+          "belief": "他以为妹妹是来借钱的",
+          "since_ch": 1
+        }
+      ],
+      "forbidden_knowledge": ["F9"]
+    }
+  ],
+  "reader_known": [
+    {
+      "fact_id": "F1",
+      "revealed_in_ch": 1
+    }
+  ]
+}

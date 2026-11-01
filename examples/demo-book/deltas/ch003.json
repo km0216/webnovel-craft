@@ -1,0 +1,13 @@
+{
+  "chapter": 3,
+  "summary": "信被捡起来了，收件人是苏野；苏念搬到里屋；她没敢问他",
+  "facts": [
+    { "id": "F3", "subj": "门槛下的信", "pred": "收件人是", "obj": "苏野", "cardinality": "single", "canon_status": "canon", "visible_from_volume": 1, "source_ch": 3, "evidence": "信封上写着苏野的名字" },
+    { "id": "F4", "subj": "苏念", "pred": "住在", "obj": "里屋", "cardinality": "single", "canon_status": "canon", "visible_from_volume": 1, "source_ch": 3, "evidence": "那间", "supersedes": [ "F1" ] }
+  ],
+  "foreshadow": [ { "id": "X1", "op": "ready" } ],
+  "characters": [
+    { "id": "sunian", "state": { "location": "里屋" }, "known": [ { "fact_id": "F3", "learned_in_ch": 3, "how": "她弯腰捡起来看了" } ] }
+  ],
+  "reader_known": [ { "fact_id": "F3", "revealed_in_ch": 3 } ]
+}

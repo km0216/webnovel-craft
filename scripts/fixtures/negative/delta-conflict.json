@@ -1,0 +1,1 @@
+{ "chapter": 4, "summary": "测试用：不声明 supersedes 就改既定事实", "facts": [ { "id": "F5", "subj": "苏念", "pred": "住在", "obj": "二七零六", "evidence": "测试" } ] }

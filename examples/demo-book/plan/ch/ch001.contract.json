@@ -1,0 +1,28 @@
+{
+  "chapter": 1,
+  "goal": "她进门，读者知道这屋里有个没说出口的事",
+  "must_cover_nodes": [
+    "站在门口",
+    "钥匙"
+  ],
+  "must_preserve": [],
+  "forbidden_zones": [
+    "不许提父母"
+  ],
+  "required_appearances": [
+    "sunian",
+    "suye"
+  ],
+  "required_payoffs": [],
+  "pov": "sunian",
+  "time_anchor": "傍晚",
+  "word_window": [
+    120,
+    3000
+  ],
+  "end_hook_type": "悬念",
+  "next_chapter_commitments": [
+    "她还没看门槛下那封信"
+  ],
+  "notes": ""
+}

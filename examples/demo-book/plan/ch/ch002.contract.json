@@ -1,0 +1,1 @@
+{ "chapter": 2, "goal": "规矩立起来，她更想靠近", "must_cover_nodes": ["早饭", "他说了家里的规矩"], "must_preserve": [], "forbidden_zones": [], "required_appearances": ["sunian", "suye"], "required_payoffs": [], "pov": "sunian", "time_anchor": "第二天早上", "word_window": [150, 3000], "end_hook_type": "信息投放", "next_chapter_commitments": ["门槛下的信还在那儿"], "notes": "" }

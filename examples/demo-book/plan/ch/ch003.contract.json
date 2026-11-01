@@ -1,0 +1,1 @@
+{ "chapter": 3, "goal": "信露出来，她动了不该动的东西", "must_cover_nodes": ["她弯腰捡信", "收件人不是哥哥"], "must_preserve": [], "forbidden_zones": [], "required_appearances": ["sunian"], "required_payoffs": [], "pov": "sunian", "time_anchor": "当晚", "word_window": [150, 3000], "end_hook_type": "反转", "next_chapter_commitments": ["她没敢问哥哥"], "notes": "" }

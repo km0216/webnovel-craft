@@ -1,0 +1,15 @@
+{
+  "chapter": 1,
+  "summary": "苏念住进二七零四；门槛下第一次出现没拆的信；她还没敢问他过得好不好",
+  "facts": [
+    { "id": "F1", "subj": "苏念", "pred": "住在", "obj": "二七零四", "cardinality": "single", "canon_status": "canon", "visible_from_volume": 1, "source_ch": 1, "evidence": "门牌是二七零四" }
+  ],
+  "foreshadow": [
+    { "id": "X1", "op": "plant", "content": "门槛下压着一封没拆的信", "payoff_window": [3, 5], "payoff_signal": "信封上收件人的名字" }
+  ],
+  "characters": [
+    { "id": "sunian", "state": { "location": "二七零四", "goal": "先把行李放好" }, "known": [ { "fact_id": "F1", "learned_in_ch": 1, "how": "她看见门牌" } ] },
+    { "id": "suye", "state": { "location": "二七零四" } }
+  ],
+  "reader_known": [ { "fact_id": "F1", "revealed_in_ch": 1 } ]
+}

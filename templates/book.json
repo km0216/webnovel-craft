@@ -1,0 +1,31 @@
+{
+  "title": "未命名",
+  "genre": "",
+  "platform": "",
+  "pov": "third-limited",
+  "word_window": [2000, 3000],
+  "volume_starts": [1],
+  "sacred": [
+    "示例：主角不会主动杀人",
+    "示例：这本书没有超自然复活"
+  ],
+  "style_sample": "canon/style-sample.md",
+  "whitelist": ["示例专名", "示例门派"],
+  "thresholds": {
+    "micro_action_per_kchar_max": 20,
+    "em_dash_per_kchar_max": 2,
+    "dunhao_list_per_kchar_max": 3.6,
+    "adjacent_same_shape_per_100para_max": 8
+  },
+  "hook_types": ["悬念", "反转", "情绪炸弹", "信息投放"],
+  "nsfw": {
+    "enabled": false,
+    "explicit_level": "L3",
+    "profile": "white-text",
+    "narration_register": "plain",
+    "climax_register": "crude",
+    "taboos": [],
+    "density": { "teaser_every_chapters": [2, 3], "scene_every_chapters": [6, 8] },
+    "min_chars": { "teaser": 800, "scene": 1500, "full": 2500 }
+  }
+}

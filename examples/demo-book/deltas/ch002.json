@@ -1,0 +1,13 @@
+{
+  "chapter": 2,
+  "summary": "苏野立下规矩：不许进他房间；伏笔从『压着』变成『她看见了』；兄妹俩离得更远一点",
+  "facts": [
+    { "id": "F2", "subj": "苏野", "pred": "不许", "obj": "苏念进他房间", "cardinality": "single", "canon_status": "canon", "visible_from_volume": 1, "source_ch": 2, "evidence": "我房间你别进" }
+  ],
+  "foreshadow": [ { "id": "X1", "op": "hint" } ],
+  "characters": [
+    { "id": "sunian", "known": [ { "fact_id": "F2", "learned_in_ch": 2, "how": "他剥鸡蛋的时候说的" } ] },
+    { "id": "suye", "state": { "location": "二七零四", "goal": "不让她卷进来" } }
+  ],
+  "reader_known": [ { "fact_id": "F2", "revealed_in_ch": 2 } ]
+}

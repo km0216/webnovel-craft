@@ -1,0 +1,13 @@
+{
+  "title": "样例书",
+  "genre": "都市",
+  "platform": "样例",
+  "pov": "third-limited",
+  "word_window": [2000, 3000],
+  "volume_starts": [1],
+  "sacred": ["苏念不会主动提父母的事"],
+  "style_sample": "",
+  "whitelist": ["二七零四", "苏念", "苏野"],
+  "thresholds": { "micro_action_per_kchar_max": 20, "em_dash_per_kchar_max": 2 },
+  "hook_types": ["悬念", "反转", "情绪炸弹", "信息投放"]
+}

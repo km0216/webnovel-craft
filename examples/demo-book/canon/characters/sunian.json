@@ -1,0 +1,46 @@
+{
+  "id": "sunian",
+  "name": "苏念",
+  "role": "protagonist",
+  "stable": {
+    "motivation": "想被人留下来",
+    "goal": "在城里读完这一年",
+    "conflict": "想问又不敢问",
+    "arc": "从躲着看，到敢开口",
+    "anchors": [
+      "不会主动提父母",
+      "难受的时候先收碗"
+    ],
+    "lines": [
+      "哥，我住了啊。",
+      "你忙你的。"
+    ]
+  },
+  "state": {
+    "location": "里屋",
+    "goal": "先把行李放好",
+    "relations": {},
+    "power": "",
+    "items": [],
+    "conditions": []
+  },
+  "known": [
+    {
+      "fact_id": "F1",
+      "learned_in_ch": 1,
+      "how": "她看见门牌"
+    },
+    {
+      "fact_id": "F2",
+      "learned_in_ch": 2,
+      "how": "他剥鸡蛋的时候说的"
+    },
+    {
+      "fact_id": "F3",
+      "learned_in_ch": 3,
+      "how": "她弯腰捡起来看了"
+    }
+  ],
+  "misbeliefs": [],
+  "forbidden_knowledge": []
+}

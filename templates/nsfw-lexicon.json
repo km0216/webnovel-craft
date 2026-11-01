@@ -1,0 +1,697 @@
+{
+  "version": 1,
+  "note": "词不是禁或不禁，是「这个域在这本书里合不合」。检测看域匹配，不看单词。",
+  "registers": {
+    "plain": "白描：说清在做什么，不绕。白文的主叙述默认",
+    "colloquial": "口语：日常说法，带语气。都市/校园的对白常用",
+    "crude": "粗口：失控、狠话、紧要处。强度和情绪一起上来时用",
+    "literary": "文雅/古语：古风、古典仙侠、辞藻当卖点的品类。用对了是风格，用错了是回避",
+    "clinical": "医学/诊断：医患、临床、解剖语域。在那种场景里它才是准确的",
+    "euphemism": "含蓄回避：靠留白不点破。整场都用它 = 掐灭"
+  },
+  "profiles": {
+    "white-text": {
+      "narration": [
+        "plain"
+      ],
+      "climax": [
+        "plain",
+        "crude"
+      ],
+      "dialogue": [
+        "colloquial",
+        "crude"
+      ],
+      "avoid": [
+        "literary",
+        "clinical"
+      ],
+      "why": "番茄/七猫主流：文雅替代读着假，医学词读着像诊断书"
+    },
+    "literary": {
+      "narration": [
+        "literary",
+        "plain"
+      ],
+      "climax": [
+        "literary",
+        "plain"
+      ],
+      "dialogue": [
+        "literary",
+        "colloquial"
+      ],
+      "avoid": [
+        "clinical",
+        "crude"
+      ],
+      "why": "古言/古典仙侠：辞藻本身就是卖点，粗口反而出戏"
+    },
+    "urban": {
+      "narration": [
+        "plain",
+        "colloquial"
+      ],
+      "climax": [
+        "crude",
+        "plain"
+      ],
+      "dialogue": [
+        "colloquial",
+        "crude"
+      ],
+      "avoid": [
+        "literary",
+        "clinical"
+      ],
+      "why": "都市/校园：口语才像人说话"
+    },
+    "clinical": {
+      "narration": [
+        "clinical",
+        "plain"
+      ],
+      "climax": [
+        "clinical",
+        "plain"
+      ],
+      "dialogue": [
+        "clinical",
+        "colloquial"
+      ],
+      "avoid": [
+        "crude",
+        "literary"
+      ],
+      "why": "医患/临床设定：医学词才是准确表述，粗口会破戏"
+    }
+  },
+  "terms": [
+    {
+      "term": "乳肉",
+      "part": "female-chest",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "双乳",
+      "part": "female-chest",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "酥胸",
+      "part": "female-chest",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "奶子",
+      "part": "female-chest",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "奶头",
+      "part": "female-nipple",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "乳尖",
+      "part": "female-nipple",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "乳珠",
+      "part": "female-nipple",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "花蕾",
+      "part": "female-nipple",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "蓓蕾",
+      "part": "female-nipple",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "小穴",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "嫩穴",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "穴口",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "逼",
+      "part": "female-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "幽谷",
+      "part": "female-genital",
+      "register": "literary",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "那一处",
+      "part": "female-genital",
+      "register": "euphemism",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "私处",
+      "part": "female-genital",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "阴部",
+      "part": "female-genital",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "阴道",
+      "part": "female-genital",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "内壁",
+      "part": "female-inside",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "软肉",
+      "part": "female-inside",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "花心",
+      "part": "female-inside",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "蕊心",
+      "part": "female-inside",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "花蒂",
+      "part": "female-clit",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "花唇",
+      "part": "female-clit",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "阴核",
+      "part": "female-clit",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "臀肉",
+      "part": "female-hip",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "臀瓣",
+      "part": "female-hip",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "屁股",
+      "part": "female-hip",
+      "register": "colloquial",
+      "intensity": 3,
+      "scope": "both"
+    },
+    {
+      "term": "翘臀",
+      "part": "female-hip",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "蜜液",
+      "part": "fluid-female",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "爱液",
+      "part": "fluid-female",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "淫水",
+      "part": "fluid-female",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "分泌物",
+      "part": "fluid-female",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "肉棒",
+      "part": "male-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "柱身",
+      "part": "male-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "鸡巴",
+      "part": "male-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "阳具",
+      "part": "male-genital",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "分身",
+      "part": "male-genital",
+      "register": "euphemism",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "昂藏",
+      "part": "male-genital",
+      "register": "literary",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "阴茎",
+      "part": "male-genital",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "顶端",
+      "part": "male-glans",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "龟头",
+      "part": "male-glans",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "冠首",
+      "part": "male-glans",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "精液",
+      "part": "fluid-male",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "both"
+    },
+    {
+      "term": "白浊",
+      "part": "fluid-male",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "精元",
+      "part": "fluid-male",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "挺入",
+      "part": "action-entry",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "没入",
+      "part": "action-entry",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "顶入",
+      "part": "action-entry",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "抽送",
+      "part": "action-entry",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "律动",
+      "part": "action-entry",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "插",
+      "part": "action-entry",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "干",
+      "part": "action-entry",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "操",
+      "part": "action-entry",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "顶弄",
+      "part": "action-thrust",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "撞",
+      "part": "action-thrust",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "磨",
+      "part": "action-thrust",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "狠干",
+      "part": "action-thrust",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "猛冲",
+      "part": "action-thrust",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "narration"
+    },
+    {
+      "term": "绞紧",
+      "part": "action-tighten",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "收拢",
+      "part": "action-tighten",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "翕动",
+      "part": "action-tighten",
+      "register": "literary",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "夹死",
+      "part": "action-tighten",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "释放",
+      "part": "action-climax",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "泄",
+      "part": "action-climax",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "射",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "喷",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "潮吹",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "narration"
+    },
+    {
+      "term": "中出",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "narration"
+    },
+    {
+      "term": "发烫",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "发胀",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "喉咙干",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "呼吸重",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "发软",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "打颤",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "脚趾蜷",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "闷哼",
+      "part": "reaction-voice",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "酥麻的电流",
+      "part": "cliche",
+      "register": "literary",
+      "intensity": 1,
+      "scope": "narration",
+      "note": "抽象俗套：要换成具体部位的具体反应"
+    },
+    {
+      "term": "欲仙欲死",
+      "part": "cliche",
+      "register": "literary",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "攀上顶峰",
+      "part": "cliche",
+      "register": "literary",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "融化成一滩水",
+      "part": "cliche",
+      "register": "euphemism",
+      "intensity": 1,
+      "scope": "narration"
+    },
+    {
+      "term": "磨人的小妖精",
+      "part": "cliche",
+      "register": "crude",
+      "intensity": 2,
+      "scope": "dialogue"
+    },
+    {
+      "term": "好大",
+      "part": "cliche",
+      "register": "crude",
+      "intensity": 2,
+      "scope": "dialogue"
+    },
+    {
+      "term": "好舒服",
+      "part": "cliche",
+      "register": "crude",
+      "intensity": 2,
+      "scope": "dialogue"
+    }
+  ],
+  "aftercare_markers": [
+    "擦",
+    "洗澡",
+    "披上",
+    "倒水",
+    "抱着",
+    "枕头",
+    "汗",
+    "缓过来",
+    "说句话",
+    "睡过去"
+  ],
+  "notes": [
+    "同一场戏里别混两个域：小穴和私处混着用，读者会出戏",
+    "对白里的域按角色卡的 voice.lexicon 定；叙述按 book.nsfw.narration_register 定",
+    "cliche 是俗套词条，任何 profile 下都该改，但不是禁词——它在戏仿/角色刻意说时成立"
+  ]
+}

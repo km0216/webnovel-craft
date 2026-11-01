@@ -1,0 +1,41 @@
+{
+  "id": "char_id",
+  "name": "角色名",
+  "role": "protagonist",
+  "stable": {
+    "motivation": "他真正想要什么（不是目标，是驱动）",
+    "goal": "这一卷他要达成什么",
+    "conflict": "内在冲突：两个都要，只能选一个",
+    "arc": "从 A 变成 B",
+    "anchors": [
+      "行为锚点 1：他不会做的事（例：不解释自己）",
+      "行为锚点 2：他被逼急了会做什么（例：笑）"
+    ],
+    "lines": [
+      "台词样本 1（定腔调用，写的时候照着这个语感）",
+      "台词样本 2"
+    ]
+  },
+  "state": {
+    "location": "",
+    "goal": "",
+    "relations": {},
+    "power": "",
+    "items": [],
+    "conditions": []
+  },
+  "voice": {
+    "lexicon": "plain",
+    "swears_in_dialogue": false,
+    "silent_when_aroused": false
+  },
+  "intimacy": {
+    "orientation": "",
+    "preferences": [],
+    "limits": [],
+    "first_exp": ""
+  },
+  "known": [],
+  "misbeliefs": [],
+  "forbidden_knowledge": []
+}

@@ -1,0 +1,33 @@
+{
+  "chapter": 12,
+  "verdict": "revise",
+  "scores": {
+    "sao_payoff": 1,
+    "opening_hook": 2,
+    "pacing_density": 1,
+    "no_poison_points": 2,
+    "emotion_immersion": 1,
+    "ending_hook": 2,
+    "prose_ai": 0,
+    "pov_discipline": 2,
+    "info_release": 1
+  },
+  "issues": [
+    {
+      "severity": "blocking",
+      "category": "prose_ai",
+      "evidence": "不是害怕，而是某种更深的疲惫",
+      "why": "翻案腔：先立一个读者没有的误解再推翻，AI 味最强的一种",
+      "fix_hint": "删掉否定半句，直接写后项，或改成动作",
+      "blocking": true
+    },
+    {
+      "severity": "minor",
+      "category": "pacing_density",
+      "evidence": "他在门口站了很久。",
+      "why": "同一信息在前一段已经给过",
+      "fix_hint": "合并到前一段，别重复交代",
+      "blocking": false
+    }
+  ]
+}

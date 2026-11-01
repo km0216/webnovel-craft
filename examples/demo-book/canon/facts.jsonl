@@ -1,0 +1,4 @@
+{"id":"F1","subj":"苏念","pred":"住在","obj":"二七零四","cardinality":"single","canon_status":"canon","valid_from_ch":1,"valid_until_ch":2,"visible_from_volume":1,"source_ch":1,"evidence":"门牌是二七零四","retired_reason":"被 F4 取代（第 3 章）"}
+{"id":"F2","subj":"苏野","pred":"不许","obj":"苏念进他房间","cardinality":"single","canon_status":"canon","valid_from_ch":2,"valid_until_ch":null,"visible_from_volume":1,"source_ch":2,"evidence":"我房间你别进"}
+{"id":"F3","subj":"门槛下的信","pred":"收件人是","obj":"苏野","cardinality":"single","canon_status":"canon","valid_from_ch":3,"valid_until_ch":null,"visible_from_volume":1,"source_ch":3,"evidence":"信封上写着苏野的名字"}
+{"id":"F4","subj":"苏念","pred":"住在","obj":"里屋","cardinality":"single","canon_status":"canon","valid_from_ch":3,"valid_until_ch":null,"visible_from_volume":1,"source_ch":3,"evidence":"那间"}

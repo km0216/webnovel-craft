@@ -1,0 +1,24 @@
+{
+  "chapter": 1,
+  "goal": "本章一句话目标（读者读完该获得什么）",
+  "must_cover_nodes": [
+    "必须发生的节点 1",
+    "必须发生的节点 2"
+  ],
+  "must_preserve": [
+    "不许推翻的既有设定（例：他左手有伤）"
+  ],
+  "forbidden_zones": [
+    "禁区（例：不许揭穿老张在撒谎）"
+  ],
+  "required_appearances": ["char_id"],
+  "required_payoffs": [],
+  "pov": "char_id",
+  "time_anchor": "故事内时间（例：进城第二天傍晚）",
+  "word_window": [2000, 3000],
+  "end_hook_type": "悬念",
+  "next_chapter_commitments": [
+    "下一章必须承接的事（例：他还没打开那封信）"
+  ],
+  "notes": ""
+}

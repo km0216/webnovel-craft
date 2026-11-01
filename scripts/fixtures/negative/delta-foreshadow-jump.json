@@ -1,0 +1,5 @@
+{ "chapter": 4, "summary": "测试：plant 之后同章直接 payoff（应拒）",
+  "foreshadow": [
+    { "id": "X2", "op": "plant", "content": "楼道感应灯坏了", "payoff_window": [6, 9], "payoff_signal": "灯亮起来的那一下" },
+    { "id": "X2", "op": "payoff", "evidence": "同章跳步" }
+  ] }
