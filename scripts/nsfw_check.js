@@ -14,7 +14,7 @@ const C = require('./lib/common');
 
 const USAGE = 'Usage: node nsfw_check.js --book DIR --ch N [--json] [--strict]';
 const LEVEL_CAP = { L1: 1, L2: 2, L3: 3, L4: 4, L5: 5, L6: 5 };
-const QUOTED = /[“"「]([^”"」]{1,200})[”"」]/g;
+const QUOTED = /[「“"]([^」”"\n]{1,400})[」”"]/g;
 
 function loadLexicon(bookRoot) {
   const own = path.join(bookRoot, 'nsfw-lexicon.json');

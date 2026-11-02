@@ -22,9 +22,12 @@
 # 建一本新书（平台参数自动预置）
 node scripts/new_book.js --dir ./my-book --title "书名" --genre "玄幻" --platform "番茄"
 
-# 立人设：建卡（结构齐全、内容待填）
+# 立人设：建卡（给的是空骨架，结构齐全、内容待填）
 node scripts/new_char.js --book ./my-book --id lin_wan --name 林晚 --role supporting --function 施压者 --age 24
+
+# 卡门：空骨架一定被拦，这是设计，不是坏了
 node scripts/char_check.js --book ./my-book
+# 填完五问（或照 examples/cards/gan_tang.json 填一张）再跑，才会过
 
 # 写前：生成这一章的上下文
 node scripts/rebuild.js --book ./my-book --ch 1
@@ -39,6 +42,20 @@ node scripts/nsfw_check.js       --book ./my-book --ch 1   # 仅成人向书
 node scripts/settle.js  --book ./my-book --ch 1 --delta ./my-book/deltas/ch001.json
 node scripts/rebuild.js --book ./my-book --ch 2
 ```
+
+> **两道门第一次跑一定会拦你，那不是装坏了**：
+> `output_check` 按平台字数窗口判（番茄 2000–3000 字），写一段试笔必被拦；
+> `char_check` 对空卡必拦。两件事都是设计。
+
+**三十秒验证环境**：样例书已经建好，直接跑就能看到各道门长什么样。
+
+```bash
+node scripts/output_check.js  --book examples/demo-book --ch 1     # 机械门：干净
+node scripts/continuity_check.js --book examples/demo-book --ch 1  # 硬层：0 条
+node scripts/dialogue_check.js --file "scripts/fixtures/negative_clean/_第03章-第一回.md"   # 对白门：人类稿零提示
+```
+
+> 样例章节只有 147 字，是给链路用的，不是给字数门用的；`dialogue_check` 对不足 6 句的片段不判占比与磕碰，所以它在样例上只报「结构上没毛病」。想看这两条怎么报，随便拿一章真稿跑。
 
 完整的九步循环见 `references/01-pipeline.md`。
 

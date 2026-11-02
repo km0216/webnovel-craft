@@ -14,7 +14,7 @@ const C = require('./lib/common');
 
 const USAGE = 'Usage: node dialogue_check.js --book DIR --ch N | --file PATH [--json] [--strict]';
 
-const QUOTED = /[「“]([^」”]{1,400})[」”]/g;
+const QUOTED = /[「“"]([^」”"\n]{1,400})[」”"]/g;
 const ADVERB_ATTR = /(?:冷笑|苦笑|嘲笑|不屑|冷冷|淡淡|轻轻|轻轻|低声|轻声|沉声|哑声|柔声|厉声|温柔|愤怒|恼火)[地]?(?:说|道|问|答|喊|叫|吼)|\b\w{1,3}(?:笑道|怒道|冷道|低声道|轻声道|沉声道|哑声道)/g;
 const STUMBLE_MARKS = /(?:没说完|未说完|话到一半|半句|咽回去|咽了下去|打断|接了过去|抢过话|顿了一下|顿了顿)/g;
 const MIN_SHORT = 6;

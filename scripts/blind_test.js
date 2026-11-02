@@ -23,7 +23,7 @@ function main() {
 
   const text = fs.readFileSync(file, 'utf8');
   const lines = [];
-  for (const m of text.matchAll(/[「“]([^」”]{1,400})[」”]/g)) {
+  for (const m of text.matchAll(/[「“"]([^」”"\n]{1,400})[」”"]/g)) {
     const s = m[1].trim();
     if (s) lines.push(s);
   }

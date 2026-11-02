@@ -8,7 +8,7 @@
 
 | 路径 | 是什么 | 期望 |
 |---|---|---|
-| `negative_clean/` | 人类网文正文 10 章（取自 `某部连载`，14.7 万字体量的子集；含合法破折号、长段、方言、口语） | 检测器 **0 blocking**；advisory 允许少量 |
+| `negative_clean/` | 人类网文正文 10 章（取自一部 14.7 万字连载的子集；含合法破折号、长段、方言、口语） | 检测器 **0 blocking**；advisory 允许少量 |
 | `positive/` | 已知 AI 味样本（待批 2 补） | 每条触发器都要中 |
 | `negative/delta-conflict.json` | 不声明 `supersedes` 就改既定事实 | `settle` 拒绝，exit 1 |
 | `negative/delta-foreshadow-jump.json` | 伏笔从 `setup` 直接 `payoff` | `settle` 拒绝，exit 1 |
