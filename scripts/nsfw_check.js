@@ -53,6 +53,36 @@ function main() {
   const dialogueSpans = [];
   for (const m of text.matchAll(QUOTED)) dialogueSpans.push([m.index, m.index + m[0].length]);
 
+  // 0.5 规格：整章字数够不够（声明 L4+ 却写成一闪而过，是另一种掐灭）
+  const MIN_CHARS = { L1: 0, L2: 800, L3: 800, L4: 1500, L5: 1500, L6: 2500 };
+  const countChars = (t) => Array.from(t.replace(/\s+/g, '').replace(/[，。！？；：、“”‘’（）《》…—\-·,.!?;:"'()\[\]]/g, '')).length;
+  const ct0 = C.readJsonSafe(P.contract(ch), null);
+  const chLevel = (ct0 && ct0.nsfw_level) || level;
+  const minChars = MIN_CHARS[chLevel] || 0;
+  const chapChars = countChars(text);
+  if (minChars && chapChars < minChars) {
+    add('under-length', `本章 ${chapChars} 字，${chLevel} 的规格是 ${minChars} 字：补一场实的（前戏 / 第二拍 / 事后），别拿形容词注水`, '');
+  }
+
+  // 0. 模糊指代：叙述里用「那里/下面/那个地方」代指性器官 —— 把词说出来
+  //    （放在最前：整章一个词库词都没命中、却通篇「那里」，恰恰是最该抓的写法）
+  const proxies = lex.vague_proxies || ['那里', '那儿', '下面', '底下', '那个地方', '那地方', '私处', '下身', '那个部位'];
+  const cues = lex.erotic_cues || ['热', '湿', '紧', '胀', '颤', '抖', '进', '顶', '夹', '贴', '摸', '舔', '含', '抵', '揉', '咬', '喘', '水', '肿', '麻'];
+  let narr = '';
+  let last = 0;
+  for (const [s, e] of dialogueSpans) { narr += `${text.slice(last, s)}${'　'.repeat(e - s)}`; last = e; }
+  narr += text.slice(last);
+  const vagueSeen = new Set();
+  for (const sen of narr.split(/[。！？；!?;\n]+/).map((x) => x.trim()).filter(Boolean)) {
+    const p = proxies.find((x) => sen.includes(x));
+    if (!p || vagueSeen.has(p)) continue;
+    if (!cues.some((c) => sen.includes(c))) continue; // 只有情欲语境里的指代才算回避
+    vagueSeen.add(p);
+    add('vague-anatomy',
+      `叙述用「${p}」代指（${sen.slice(0, 18)}）：把词写出来 —— 按本书语域选具体词，或直接写动作和反应，别用代称`,
+      p);
+  }
+
   const hits = [];
   for (const t of lex.terms || []) {
     let at = text.indexOf(t.term);
@@ -62,7 +92,7 @@ function main() {
       at = text.indexOf(t.term, at + t.term.length);
     }
   }
-  if (!hits.length) {
+  if (!hits.length && !issues.length) {
     console.log(`第 ${ch} 章（${profileName} · ${level}）：没有命中词库里的词，没什么可说的。`);
     return;
   }
@@ -98,6 +128,18 @@ function main() {
     if (h.part === 'cliche') continue;
     if (h.intensity > cap) {
       add('level-exceeded', `用了「${h.term}」（强度 ${h.intensity}），但本书声明 ${level}（上限 ${cap}）`, h.term);
+    }
+  }
+
+  // 3.5 换词凑数：同一部位在一章里被叫出三种以上
+  const byPart = {};
+  for (const h of hits) {
+    if (!h.part || h.part === 'cliche' || h.part.startsWith('action') || h.part.startsWith('reaction')) continue;
+    (byPart[h.part] = byPart[h.part] || new Set()).add(h.term);
+  }
+  for (const [part, set] of Object.entries(byPart)) {
+    if (set.size >= 3) {
+      add('term-rotation', `${part} 被叫出 ${set.size} 种（${[...set].join(' / ')}）：一个部位定一个词，花样靠动作和反应换，不靠换词`, [...set][0]);
     }
   }
 

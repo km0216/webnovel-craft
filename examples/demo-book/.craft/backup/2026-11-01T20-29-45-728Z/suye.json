@@ -1,0 +1,30 @@
+{
+  "id": "suye",
+  "name": "苏野",
+  "role": "protagonist",
+  "stable": {
+    "motivation": "把日子撑住，不让人看出他撑不住",
+    "goal": "不让她卷进来",
+    "conflict": "想靠近又怕靠近",
+    "arc": "从端着，到承认",
+    "anchors": [
+      "不解释自己",
+      "被逼急了会笑"
+    ],
+    "lines": [
+      "放那儿。",
+      "有事说事。"
+    ]
+  },
+  "state": {
+    "location": "二七零四",
+    "goal": "不让她卷进来",
+    "relations": {},
+    "power": "",
+    "items": [],
+    "conditions": []
+  },
+  "known": [],
+  "misbeliefs": [],
+  "forbidden_knowledge": []
+}

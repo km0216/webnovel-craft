@@ -1,19 +1,83 @@
 {
   "id": "suye",
   "name": "苏野",
-  "role": "protagonist",
+  "role": "supporting",
+  "function": "护短者",
+  "oneline": "二七零四的房主，白天修车，夜里不睡，把人往外推是他的习惯。",
+  "memory_hook": "被逼急了会笑，笑完不说话。",
+  "age": 26,
+  "age_basis": "修车行干了五年，房是他爸留下的",
   "stable": {
-    "motivation": "把日子撑住，不让人看出他撑不住",
-    "goal": "不让她卷进来",
-    "conflict": "想靠近又怕靠近",
-    "arc": "从端着，到承认",
+    "motivation": "把日子撑住，不让任何人看出他撑不住。",
+    "goal": "这个月的账平掉，别让苏念卷进来。",
+    "surface_want": "账平了，人各过各的。",
+    "deep_need": "想回家的时候灯是亮的，又不肯承认。",
+    "fear": "被人看穿他在硬撑。",
+    "leverage": "一提「她该走了」，他先松口，嘴比脑子快。",
+    "secret": "那笔债他没跟任何人说。",
+    "secret_if_revealed": "苏念会觉得自己是负担，第二天就开始找第二份工。",
+    "conflict": "想靠近，又怕靠近就成了别人的负担。",
+    "arc": "从端着，到承认。",
+    "behaviors": [
+      {
+        "trigger": "她问「你吃了吗」",
+        "reaction": "说吃了，转身去阳台点烟。"
+      },
+      {
+        "trigger": "被逼到没有退路",
+        "reaction": "笑一下，然后不说话，把话头掐掉。"
+      },
+      {
+        "trigger": "她半夜出门",
+        "reaction": "穿鞋跟下楼，不远不近，不叫她。"
+      }
+    ],
     "anchors": [
-      "不解释自己",
-      "被逼急了会笑"
+      "不解释自己。",
+      "被逼急了会笑。"
     ],
     "lines": [
       "放那儿。",
-      "有事说事。"
+      "有事说事。",
+      "灯我没关，你回来自己看着点。"
+    ],
+    "speech": {
+      "sentence": "短句，一次不超过两句；省略主语，像在打发人。",
+      "tic": "「放那儿」——所有关心都从这三个字开始。",
+      "by_relation": [
+        {
+          "to": "苏念",
+          "tone": "命令句，硬，但每句都在留她"
+        },
+        {
+          "to": "修车行的客人",
+          "tone": "客气、寡言，只谈价格"
+        }
+      ],
+      "interrupt": "被打断就停，等对方说完，再从头说一遍",
+      "filler": "「行了。」",
+      "sparring": [
+        "「放那儿。」",
+        "「我放了。」",
+        "「放了就别动。」"
+      ]
+    },
+    "payoffs": [
+      {
+        "kind": "预告",
+        "at": "第 1 章",
+        "what": "他不让任何人进那间锁着的屋子"
+      },
+      {
+        "kind": "小兑现",
+        "at": "第 2 章",
+        "what": "把钥匙放在桌上，一句话没说"
+      },
+      {
+        "kind": "大兑现",
+        "at": "第 25 章",
+        "what": "当着债主承认债是他的，把人挡在身后"
+      }
     ]
   },
   "state": {
@@ -24,7 +88,19 @@
     "items": [],
     "conditions": []
   },
+  "voice": {
+    "lexicon": "plain",
+    "swears_in_dialogue": false,
+    "silent_when_aroused": true
+  },
+  "intimacy": {
+    "orientation": "",
+    "preferences": [],
+    "limits": [],
+    "first_exp": ""
+  },
   "known": [],
   "misbeliefs": [],
-  "forbidden_knowledge": []
+  "forbidden_knowledge": [],
+  "appearance": "肩宽，常年穿修车行那件带油渍的工装。左手虎口一道旧疤，指甲缝洗不干净。说话前先把嘴角往下压一下。"
 }

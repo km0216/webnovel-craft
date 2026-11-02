@@ -25,12 +25,12 @@
   "scores": {
     "sao_payoff": 0, "opening_hook": 0, "pacing_density": 0,
     "no_poison_points": 0, "emotion_immersion": 0, "ending_hook": 0,
-    "prose_ai": 0, "pov_discipline": 0, "info_release": 0
+    "prose_ai": 0, "pov_discipline": 0, "info_release": 0, "dialogue_life": 0
   },
   "issues": [
     {
       "severity": "blocking | major | minor",
-      "category": "continuity | character | pacing | sao | hook | poison | pov | prose_ai | info_release",
+      "category": "continuity | character | pacing | sao | hook | poison | pov | prose_ai | info_release | dialogue",
       "evidence": "正文里的原句（必须能原样搜到）",
       "why": "一句话：违反了什么判据",
       "fix_hint": "一句话：往哪个方向改（不写具体句子）",
@@ -42,7 +42,7 @@
 
 校验：`node scripts/check_report.js --book <书> --ch 12 --report reports/ch012.review.json`
 
-## 3. 九个维度（0 = 踩雷 / 1 = 及格 / 2 = 优秀）
+## 3. 十个维度（0 = 踩雷 / 1 = 及格 / 2 = 优秀）
 
 | 字段 | 判什么 | 跌 0 的典型 |
 |---|---|---|
@@ -58,6 +58,8 @@
 
 **加权**：`sao_payoff`、`pacing_density` 权重 2；`prose_ai`、`pov_discipline` 权重 1.5；其余 1。
 加权平均 < 1.0 → `rewrite`；< 1.5 → `revise`；否则 `pass`。
+**只要有一条 blocking，verdict 最高只能是 `revise`** —— 不允许「分高就 pass」把一条 blocking 洗掉（`check_report` 会拦）。
+**pass 不等于定稿**：分过了阈值但还挂着 major，`check_report` 会警一句，仍建议进一轮改稿。
 
 ## 4. 裁决矩阵（谁能不能拦）
 
@@ -69,6 +71,8 @@
 | 只有 minor | pass（带着建议走） | 可选修 |
 
 **reviewer 的分数不是终审**：机械门（`output_check`）与硬层（`continuity_check`）的判决不可被高分覆盖；反过来，软审说「很好」也不能让机械门的 blocking 消失。
+
+**报告和正文绑定**：报告里的 `evidence` 逐字绑在当时的正文上，**改正文 = 旧报告作废**（`check_report` 会报「搜不到」）。改完必须重审，不许拿一份旧报告去过新稿的关。
 
 ## 5. 反模式（模型写评审时最容易犯）
 
@@ -90,7 +94,7 @@
 [本章正文] {chapters/chNNN.md}
 
 判据：
-- 九个维度见 references/06-review-rubric.md，每项 0/1/2
+- 十个维度见 references/06-review-rubric.md，每项 0/1/2
 - issue.evidence 必须是正文里能原样搜到的片段，不许改写、不许编
 - 只判「合同要求的东西做到没有」和「读感上的硬伤」，不判口味、不改稿
 

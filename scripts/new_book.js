@@ -71,7 +71,7 @@ function main() {
     '',
     '下一步：',
     `  1. 填 book.json 的 sacred（不可推翻的约束）与 whitelist（专名）`,
-    `  2. 填 canon/characters/protagonist.json（四要素 + 台词样本），再照它建配角`,
+    `  2. 立人设：node scripts/new_char.js --book "${root}" --id protagonist --name 主角名 --role protagonist --age 24（填完跑 char_check.js）`,
     `  3. 填 plan/ch/ch001.contract.json（本章目标 / 必覆盖节点 / 禁区 / 章末钩子）`,
     `  4. node scripts/rebuild.js --book "${root}" --ch 1   → 拿到上下文再动笔`,
   ].join('\n'));

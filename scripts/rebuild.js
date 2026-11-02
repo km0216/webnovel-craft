@@ -140,6 +140,16 @@ function main() {
         Array.isArray(st.conditions) && st.conditions.length && `状态:${st.conditions.join('/')}`,
       ].filter(Boolean);
       L.push(`- **${c.name || c.id}**（${c.id}）${parts.length ? `｜${parts.join('｜')}` : ''}`);
+      // 人设骨架进上下文：卡写得再好，写手看不到就等于没写
+      const sp = (c.stable && c.stable.speech) || {};
+      const sampleLine = Array.isArray(c.stable && c.stable.lines) ? c.stable.lines[0] : '';
+      const voiceBits = [
+        c.memory_hook && `记忆点：${c.memory_hook}`,
+        sp.sentence && `句法：${sp.sentence}`,
+        sp.tic && `口癖：${sp.tic}`,
+        sampleLine && `样句：${sampleLine}`,
+      ].filter(Boolean);
+      if (voiceBits.length) L.push(`  - ${voiceBits.join('｜')}`);
       if (c.known && c.known.length) {
         const ks = c.known.slice(-opts.knownMax).map((k) => {
           const f = factsById.get(k.fact_id);

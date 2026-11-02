@@ -13,12 +13,13 @@ const C = require('./lib/common');
 
 const USAGE = 'Usage: node check_report.js --book DIR --ch N --report FILE [--json]';
 const VERDICTS = ['pass', 'revise', 'rewrite'];
-const CATEGORIES = ['continuity', 'character', 'pacing', 'sao', 'hook', 'poison', 'pov', 'prose_ai', 'info_release'];
+const CATEGORIES = ['continuity', 'character', 'pacing', 'sao', 'hook', 'poison', 'pov', 'prose_ai', 'info_release', 'dialogue'];
 const SEVERITIES = ['blocking', 'major', 'minor'];
 const DIMS = {
   sao_payoff: 2, opening_hook: 1, pacing_density: 2,
   no_poison_points: 1, emotion_immersion: 1, ending_hook: 1,
   prose_ai: 1.5, pov_discipline: 1.5, info_release: 1,
+  dialogue_life: 1,
 };
 
 function main() {
@@ -75,13 +76,19 @@ function main() {
     const total = Object.entries(DIMS).reduce((s, [d, w]) => s + rep.scores[d] * w, 0);
     const wsum = Object.values(DIMS).reduce((s, w) => s + w, 0);
     const avg = total / wsum;
-    const expected = avg < 1.0 ? 'rewrite' : avg < 1.5 ? 'revise' : 'pass';
-    if (rep.verdict !== expected) {
-      errors.push(`加权 ${avg.toFixed(2)} 对应 verdict=${expected}，报告写的是 ${rep.verdict}`);
-    }
     const hasBlocking = (rep.issues || []).some((i) => i.blocking);
+    let expected = avg < 1.0 ? 'rewrite' : avg < 1.5 ? 'revise' : 'pass';
+    // 有 blocking 就不能 pass：否则「写 pass 被拦 / 写 revise 与加权冲突」死锁
+    if (hasBlocking && expected === 'pass') expected = 'revise';
+    if (rep.verdict !== expected) {
+      errors.push(`加权 ${avg.toFixed(2)}${hasBlocking ? '（含 blocking）' : ''} 对应 verdict=${expected}，报告写的是 ${rep.verdict}`);
+    }
     if (hasBlocking && rep.verdict === 'pass') errors.push('有 blocking issue 却给 pass');
     if (!hasBlocking && rep.verdict === 'rewrite' && avg >= 1.0) warnings.push('没有 blocking 却判 rewrite，确认理由');
+    const majors = (rep.issues || []).filter((i) => i.severity === 'major').length;
+    if (rep.verdict === 'pass' && majors > 0) {
+      warnings.push(`pass 但还挂着 ${majors} 条 major：分数过了阈值不等于定稿，建议进一轮改稿`);
+    }
     if (rep.scores.prose_ai === 0 && !(rep.issues || []).some((i) => i.category === 'prose_ai' || i.category === 'pacing')) {
       warnings.push('prose_ai=0 但没有对应 issue：跌 0 要给证据');
     }

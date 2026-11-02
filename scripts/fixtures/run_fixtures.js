@@ -107,6 +107,55 @@ check('未逾期时无 blocking', r.code === 0, r.out.trim().split('\n').slice(0
 r = node('continuity_check.js', ['--book', book, '--ch', '9'], book);
 check('伏笔逾期 3 章以上升 blocking', r.code === 1 && r.out.includes('fore-overdue'), r.out.trim().split('\n').filter((l) => l.includes('fore-overdue')).join(' '));
 
+const ctPath = path.join(book, 'plan', 'ch', 'ch001.contract.json');
+const ctBackup = fs.readFileSync(ctPath, 'utf8');
+const ctObj = JSON.parse(ctBackup);
+ctObj.pov = 'nobody_card';
+fs.writeFileSync(ctPath, JSON.stringify(ctObj, null, 2), 'utf8');
+r = node('continuity_check.js', ['--book', book, '--ch', '1'], book);
+check('视角人物没卡被提醒', r.out.includes('pov-no-card'), '');
+fs.writeFileSync(ctPath, ctBackup, 'utf8');
+
+// ── 对白门 ────────────────────────────────────────────────────
+console.log('对白');
+r = node('dialogue_check.js', ['--book', book, '--ch', '1'], book);
+check('样例章对白结构通过', r.code === 0 && !r.out.includes('flat-dialogue'), r.out.trim().split('\n')[0]);
+
+const badDlg = path.join(book, 'chapters', 'ch011.md');
+fs.writeFileSync(badDlg, [
+  '第 11 章 测试', '',
+  '「我想了很久，觉得我们之间的问题并不是一天两天形成的，需要认真谈一谈。」',
+  '「你说得对，我也一直在考虑这件事情，只是不知道应该从什么地方开始说起。」',
+  '「那我们今天就从头开始，把每一件事情都摊开来讲清楚，不要再回避了。」',
+  '「好，那我先说我这边的情况，你听完以后不要急着反驳，等我说完再讲。」',
+  '「可以，我答应你，今天不管说到什么程度，我都不会中途打断你的话。」',
+  '「谢谢你愿意这样认真地对待我们之间的问题，我真的很感激。」',
+  '「我知道你心里有气，我也一样，但是我们总要把话说完，不能一直这样僵着。」',
+  '「那就开始吧。」他淡淡地说。', '',
+].join('\n'), 'utf8');
+r = node('dialogue_check.js', ['--book', book, '--ch', '11'], book);
+check('人人完整句报 flat-dialogue', r.out.includes('flat-dialogue'), '');
+check('情绪标记动词被报', r.out.includes('adverb-attribution'), '');
+check('没有磕碰被报 no-stumble', r.out.includes('no-stumble'), '');
+check('没有推挡被报 no-sparring', r.out.includes('no-sparring'), '');
+
+fs.writeFileSync(badDlg, [
+  '第 11 章 测试', '',
+  '「你心跳很快。」', '「没有。」', '「七点吃饭吗。」', '「吃。」', '',
+].join('\n'), 'utf8');
+r = node('dialogue_check.js', ['--book', book, '--ch', '11'], book);
+check('俗套对白被报 cliche-dialogue', r.out.includes('cliche-dialogue'), '');
+fs.rmSync(badDlg, { force: true });
+
+const dlgSrc = path.join(book, 'chapters', 'ch012.md');
+const dlgOut = path.join(book, 'tmp-dialogue.txt');
+fs.writeFileSync(dlgSrc, ['第 12 章 测试', '', '「你来了。」他说。', '「嗯。」', '「吃了吗。」她把碗放下。', ''].join('\n'), 'utf8');
+r = node('blind_test.js', ['--file', dlgSrc, '--out', dlgOut], book);
+const packed = fs.existsSync(dlgOut) ? fs.readFileSync(dlgOut, 'utf8').trim().split('\n') : [];
+check('盲测包只出台词（去掉叙述与人名）', r.code === 0 && packed.length === 3 && packed.every((l) => !l.includes('他说') && !l.includes('她把')), r.out.trim());
+fs.rmSync(dlgSrc, { force: true });
+fs.rmSync(dlgOut, { force: true });
+
 // ── NSFW 语域（用词按实际情况判：同一句在不同 profile 下评价不同）──
 console.log('NSFW 语域');
 const nb = freshCopy();
@@ -145,6 +194,29 @@ fs.writeFileSync(path.join(nb, 'book.json'), JSON.stringify(bj, null, 2), 'utf8'
 r = node('nsfw_check.js', ['--book', nb, '--ch', '10'], nb);
 check('未启用时直接跳过', r.code === 0 && r.out.includes('未启用'), '');
 
+// 模糊指代：叙述里「那里/下面」代指性器官 → 报；对白里的代称豁免（是人物写法）
+bj.nsfw.enabled = true;
+fs.writeFileSync(path.join(nb, 'book.json'), JSON.stringify(bj, null, 2), 'utf8');
+fs.writeFileSync(ch10, [
+  '第 10 章 测试', '',
+  '他把手放到那里，那里已经湿了。她的腿绷直，脚趾蜷起来。',
+  '「别碰那里。」她咬着牙说。', '',
+].join('\n'), 'utf8');
+r = node('nsfw_check.js', ['--book', nb, '--ch', '10'], nb);
+check('叙述用代称报 vague-anatomy', r.out.includes('vague-anatomy'), r.out.trim().split('\n').slice(-2)[0] || '');
+check('对白里的代称豁免', (r.out.match(/vague-anatomy/g) || []).length === 1, '');
+check('整章字数不够 L4 规格报 under-length', r.out.includes('under-length'), '');
+
+// 换词凑数：同一部位一章里叫出三种以上 → 报
+fs.writeFileSync(ch10, [
+  '第 10 章 测试', '',
+  '她的穴口绞紧，肉穴里一片湿。他退出来，又顶进小穴。', '',
+].join('\n'), 'utf8');
+r = node('nsfw_check.js', ['--book', nb, '--ch', '10'], nb);
+check('同部位换三种叫法报 term-rotation', r.out.includes('term-rotation'), '');
+fs.writeFileSync(ch10, plainText, 'utf8');
+fs.writeFileSync(ch10, plainText, 'utf8');
+
 // ── 软审报告校验（reviewer 是 LLM，这层是它的护栏）──────────────
 console.log('软审报告');
 const repFile = path.join(book, 'reports', 'ch001.review.json');
@@ -162,6 +234,60 @@ fs.writeFileSync(badFile, JSON.stringify(badRep, null, 2), 'utf8');
 r = node('check_report.js', ['--book', book, '--ch', '1', '--report', badFile], book);
 check('编造证据被拒', r.code === 1 && r.out.includes('搜不到'), r.out.trim().split('\n').slice(1, 2).join(' '));
 check('有 blocking 却给 pass 被拒', r.out.includes('却给 pass'), '');
+
+// ── 角色卡门 ──────────────────────────────────────────────────
+console.log('角色卡');
+const cb = freshCopy();
+r = node('char_check.js', ['--book', cb], cb);
+check('完整卡放行', r.code === 0, r.out.trim().split('\n').slice(-1)[0]);
+
+const goodCard = path.join(SKILL, 'examples', 'cards', 'gan_tang.json');
+fs.copyFileSync(goodCard, path.join(cb, 'canon', 'characters', 'gan_tang.json'));
+const cbBook = JSON.parse(fs.readFileSync(path.join(cb, 'book.json'), 'utf8'));
+cbBook.nsfw = { enabled: true, explicit_level: 'L4', profile: 'white-text' };
+fs.writeFileSync(path.join(cb, 'book.json'), JSON.stringify(cbBook, null, 2), 'utf8');
+r = node('char_check.js', ['--book', cb], cb);
+check('成人向书里 18 岁卡放行', r.code === 0, r.out.trim().split('\n').slice(-1)[0]);
+
+const cardPath = path.join(cb, 'canon', 'characters', 'gan_tang.json');
+const cardObj = JSON.parse(fs.readFileSync(cardPath, 'utf8'));
+cardObj.age = 16;
+fs.writeFileSync(cardPath, JSON.stringify(cardObj, null, 2), 'utf8');
+r = node('char_check.js', ['--book', cb, '--id', 'gan_tang'], cb);
+check('成人向书里未成年卡必须拒绝', r.code === 1 && r.out.includes('年龄 16'), r.out.trim().split('\n')[2] || r.out.trim());
+
+delete cardObj.stable.surface_want;
+cardObj.age = 18;
+fs.writeFileSync(cardPath, JSON.stringify(cardObj, null, 2), 'utf8');
+r = node('char_check.js', ['--book', cb, '--id', 'gan_tang'], cb);
+check('缺 surface_want 必须拒绝', r.code === 1 && r.out.includes('surface_want'), '');
+
+cardObj.stable.surface_want = cardObj.stable.deep_need;
+fs.writeFileSync(cardPath, JSON.stringify(cardObj, null, 2), 'utf8');
+r = node('char_check.js', ['--book', cb, '--id', 'gan_tang'], cb);
+check('surface_want 与 deep_need 同句必须拒绝', r.code === 1 && r.out.includes('必须错开'), '');
+
+r = node('new_char.js', ['--book', cb, '--id', 'lin_wan', '--name', '林晚', '--role', 'supporting', '--function', '施压者', '--age', '27'], cb);
+check('new_char 建卡成功', r.code === 0 && fs.existsSync(path.join(cb, 'canon', 'characters', 'lin_wan.json')), r.out.trim().split('\n')[0]);
+r = node('char_check.js', ['--book', cb, '--id', 'lin_wan'], cb);
+check('模板未填被拦住', r.code === 1 && r.out.includes('模板占位符'), '');
+
+// 同声：两个人的台词改成一样 → 报 same-voice
+const svBook = freshCopy();
+const svA = JSON.parse(fs.readFileSync(path.join(svBook, 'canon', 'characters', 'sunian.json'), 'utf8'));
+const svBPath = path.join(svBook, 'canon', 'characters', 'suye.json');
+const svB = JSON.parse(fs.readFileSync(svBPath, 'utf8'));
+svB.stable.lines = svA.stable.lines;
+svB.stable.speech.sparring = svA.stable.speech.sparring;
+fs.writeFileSync(svBPath, JSON.stringify(svB, null, 2), 'utf8');
+r = node('char_check.js', ['--book', svBook], svBook);
+check('两人说话一个腔报 same-voice', r.out.includes('same-voice'), '');
+
+// 情欲卡：成人向书没填节律 → 拦cardObj.stable.surface_want = '让他先开口，她好显得不在乎。';
+delete cardObj.intimacy.rhythm;
+fs.writeFileSync(cardPath, JSON.stringify(cardObj, null, 2), 'utf8');
+r = node('char_check.js', ['--book', cb, '--id', 'gan_tang'], cb);
+check('成人向卡缺情欲节律必须拒绝', r.code === 1 && r.out.includes('intimacy.rhythm'), r.out.trim().split('\n').slice(-2)[0] || '');
 
 // ── 建书脚手架 ────────────────────────────────────────────────
 console.log('建书');

@@ -1,0 +1,2 @@
+{"id":"F1","subj":"苏念","pred":"住在","obj":"二七零四","cardinality":"single","canon_status":"canon","valid_from_ch":1,"valid_until_ch":null,"visible_from_volume":1,"source_ch":1,"evidence":"门牌是二七零四"}
+{"id":"F2","subj":"苏野","pred":"不许","obj":"苏念进他房间","cardinality":"single","canon_status":"canon","valid_from_ch":2,"valid_until_ch":null,"visible_from_volume":1,"source_ch":2,"evidence":"我房间你别进"}

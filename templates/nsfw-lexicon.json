@@ -675,6 +675,286 @@
       "register": "crude",
       "intensity": 2,
       "scope": "dialogue"
+    },
+    {
+      "term": "肉穴",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "肉缝",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "阴唇",
+      "part": "female-genital",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "narration"
+    },
+    {
+      "term": "淫穴",
+      "part": "female-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "骚穴",
+      "part": "female-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "小逼",
+      "part": "female-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "嫩逼",
+      "part": "female-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "穴肉",
+      "part": "female-inside",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "肉壁",
+      "part": "female-inside",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "阴蒂",
+      "part": "female-clit",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "narration"
+    },
+    {
+      "term": "豆豆",
+      "part": "female-clit",
+      "register": "colloquial",
+      "intensity": 2,
+      "scope": "both"
+    },
+    {
+      "term": "乳房",
+      "part": "female-chest",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "胸脯",
+      "part": "female-chest",
+      "register": "colloquial",
+      "intensity": 2,
+      "scope": "both"
+    },
+    {
+      "term": "大奶",
+      "part": "female-chest",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "肉柱",
+      "part": "male-genital",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "性器",
+      "part": "male-genital",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "屌",
+      "part": "male-genital",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "大屌",
+      "part": "male-genital",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "马眼",
+      "part": "male-glans",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "narration"
+    },
+    {
+      "term": "淫液",
+      "part": "fluid-female",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "骚水",
+      "part": "fluid-female",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "精子",
+      "part": "fluid-male",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "抽插",
+      "part": "action-entry",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "捅",
+      "part": "action-entry",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "冲刺",
+      "part": "action-thrust",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "顶撞",
+      "part": "action-thrust",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "狠插",
+      "part": "action-thrust",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "高潮",
+      "part": "action-climax",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "内射",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "颜射",
+      "part": "action-climax",
+      "register": "crude",
+      "intensity": 5,
+      "scope": "both"
+    },
+    {
+      "term": "口交",
+      "part": "action-oral",
+      "register": "plain",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "吮吸",
+      "part": "action-oral",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "舔弄",
+      "part": "action-oral",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "揉捏",
+      "part": "action-hand",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "撸动",
+      "part": "action-hand",
+      "register": "crude",
+      "intensity": 4,
+      "scope": "both"
+    },
+    {
+      "term": "后穴",
+      "part": "anus",
+      "register": "plain",
+      "intensity": 3,
+      "scope": "narration"
+    },
+    {
+      "term": "肛口",
+      "part": "anus",
+      "register": "clinical",
+      "intensity": 1,
+      "scope": "both"
+    },
+    {
+      "term": "腿软",
+      "part": "reaction",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "大腿根",
+      "part": "body",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
+    },
+    {
+      "term": "腰窝",
+      "part": "body",
+      "register": "plain",
+      "intensity": 2,
+      "scope": "narration"
     }
   ],
   "aftercare_markers": [
@@ -693,5 +973,39 @@
     "同一场戏里别混两个域：小穴和私处混着用，读者会出戏",
     "对白里的域按角色卡的 voice.lexicon 定；叙述按 book.nsfw.narration_register 定",
     "cliche 是俗套词条，任何 profile 下都该改，但不是禁词——它在戏仿/角色刻意说时成立"
+  ],
+  "vague_proxies": [
+    "那里",
+    "那儿",
+    "下面",
+    "底下",
+    "那个地方",
+    "那地方",
+    "私处",
+    "下身",
+    "那个部位",
+    "那里头"
+  ],
+  "erotic_cues": [
+    "热",
+    "湿",
+    "紧",
+    "胀",
+    "颤",
+    "抖",
+    "进",
+    "顶",
+    "夹",
+    "贴",
+    "摸",
+    "舔",
+    "含",
+    "抵",
+    "揉",
+    "咬",
+    "喘",
+    "水",
+    "肿",
+    "麻"
   ]
 }

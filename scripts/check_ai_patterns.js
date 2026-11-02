@@ -66,7 +66,7 @@ const MICRO_TIC_MIN_HITS = 5;
 const NEGATION_PAIR_PATTERN = /(?:没有|没|不)[^，。！？；,!?\n]{1,10}[，,；]\s*[^，。！？；,!?\n]{0,6}?也(?:没有|没|不)/g;
 const NEGATION_PAIR_MIN_HITS = 3;
 // 微动作复读：默认阈值按实测重标 —— 中文人类网文「了一下/了一眼/了一声」密度中位 ≈9.6/千字
-// （中文网文 50 章 / 约 15 万字实测）。旧默认 6 会让每一章都报，等于没报；提到 20 才有区分度。
+// （50 章 / 14.7 万字实测）。旧默认 6 会让每一章都报，等于没报；提到 20 才有区分度。
 // 可用 book.json 的 thresholds.micro_action_per_kchar_max 覆盖。
 let MICRO_TIC_PER_KILO = 20;
 

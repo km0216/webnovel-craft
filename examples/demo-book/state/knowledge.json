@@ -1,0 +1,43 @@
+{
+  "generated_for_chapter": 1,
+  "volume": 1,
+  "objective_facts": [
+    {
+      "id": "F1",
+      "subj": "苏念",
+      "pred": "住在",
+      "obj": "二七零四",
+      "from_ch": 1,
+      "until_ch": 2,
+      "source_ch": 1
+    }
+  ],
+  "withheld_from_reader": [],
+  "characters": {
+    "sunian": {
+      "name": "苏念",
+      "known": [],
+      "misbeliefs": [],
+      "forbidden": []
+    },
+    "suye": {
+      "name": "苏野",
+      "known": [],
+      "misbeliefs": [],
+      "forbidden": []
+    }
+  },
+  "reader_known": [],
+  "open_foreshadow": [
+    {
+      "id": "X1",
+      "state": "pending_payoff",
+      "window": [
+        3,
+        5
+      ]
+    }
+  ],
+  "overdue": [],
+  "warnings": []
+}

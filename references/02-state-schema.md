@@ -57,19 +57,47 @@
 
 ## 4. `canon/characters/<id>.json`
 
+设计方法见 `12-character-card.md`；结构由 `char_check.js` 卡门。
+
 ```
+身份块
+  id / name / role（protagonist|supporting|antagonist|foil）
+  function          功能位（施压者/看客/嘴替/护短者/镜像对照/宿敌/牺牲者/导师/情报源…）
+  nsfw              有床戏的卡标 true（成人向书里才查 intimacy）
+  oneline           一句话：他是谁、在故事里干什么（≤60 字）
+  memory_hook       一句话记忆点（≤40 字，遮名可辨）
+  appearance        三句以内：体型 / 一个显眼特征 / 习惯留下的痕迹
+  age / age_basis   年龄与依据；成人向书（book.json nsfw.enabled）强制 ≥18
 stable  稳定人设（不随剧情变）
-  motivation / goal / conflict / arc     四要素
-  anchors[]                              行为锚点：「他不会做 X」「逼急了会 Y」
-  lines[]                                台词样本，定腔调（写手照着这个语感写）
+  motivation / goal / conflict / arc      驱动 / 本卷目标 / 内在冲突 / 弧线
+  surface_want / deep_need                表面追求 × 深层渴望（**必须错开**）
+  fear / leverage                         怕失去什么 / 谁会用什么拿捏他
+  secret / secret_if_revealed             秘密；没有写 null。有秘密必须写清谁变脸
+  behaviors[]      [{trigger, reaction}]  至少 3 条「触发 → 反应」，写动作不写形容词
+  anchors[]                               行为锚点：「他不会做 X」「逼急了会 Y」
+  lines[]                                 台词样本 ≥3 条，遮名要认得出是谁
+  speech           {sentence, tic, by_relation[]}  句长 / 口癖 / 对谁什么语气（≥2 组）
+  payoffs[]        [{kind, at, what}]     预告 → 小兑现 → 大兑现
 state   当下状态（每章可被 delta 覆盖）
   location / goal / relations{} / power / items[] / conditions[]
+voice   语域（喂 nsfw_check）：lexicon 对应 templates/nsfw-lexicon.json 的域
+intimacy  成人向必填（`12-character-card.md` §10）
+  experience / initiative / negotiation / first_exp
+  rhythm[]        节律：分几段、每段谁占上风
+  tells[]         身体先于嘴的信号
+  sensitive[]     敏感点，按触发顺序
+  lexicon_drop    语言衰减曲线
+  limits[]        死线
+  aftercare       事后第一件事
 known[]             [{fact_id, learned_in_ch, how}]  只能由写出场景后登记
 misbeliefs[]        [{belief, since_ch, corrected_in_ch}]  他**错误相信**的事
 forbidden_knowledge[] [fact_id]  结构性保证他不知道（编译器硬过滤，批 2 生效）
 ```
 
-**硬规矩**：`known.learned_in_ch` 必须 ≤ 当前章；引用的 `fact_id` 必须先在账本里存在。这一条挡住连载里最常见的「角色提前知道结局」。
+**硬规矩**：
+- `known.learned_in_ch` 必须 ≤ 当前章；引用的 `fact_id` 必须先在账本里存在 —— 这一条挡住连载里最常见的「角色提前知道结局」
+- 「当下」只写在 `state`，不写进 `stable`；会变的东西写进稳定块，几十章后必漂
+- `settle` 给新角色自动建的卡是空的，写完那章记得补全并跑 `char_check.js`
 
 ## 5. `ledger/foreshadow.jsonl`
 
@@ -88,6 +116,8 @@ forbidden_knowledge[] [fact_id]  结构性保证他不知道（编译器硬过�
 ## 6. `plan/ch/chNNN.contract.json`
 
 `goal` · `must_cover_nodes[]` · `must_preserve[]` · `forbidden_zones[]` · `required_appearances[]` · `required_payoffs[]` · `pov` · `time_anchor` · `word_window` · `end_hook_type` · `next_chapter_commitments[]`
+
+成人向书另加 `nsfw_level`（L1–L6）：本章的实际尺度。`nsfw_check.js` 优先读它，没有才退回 `book.json.nsfw.explicit_level`。
 
 写稿、门禁、审稿、修稿**共同消费这一份**。上一章的 `next_chapter_commitments` 会进下一章的上下文。
 

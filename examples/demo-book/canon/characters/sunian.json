@@ -2,18 +2,82 @@
   "id": "sunian",
   "name": "苏念",
   "role": "protagonist",
+  "function": "主角",
+  "oneline": "二十岁从镇上来城里借住的姑娘，夜里在便利店站班，白天补觉。",
+  "memory_hook": "难受的时候先收碗。",
+  "age": 20,
+  "age_basis": "大专二年级，休学一年来城里",
   "stable": {
-    "motivation": "想被人留下来",
-    "goal": "在城里读完这一年",
-    "conflict": "想问又不敢问",
-    "arc": "从躲着看，到敢开口",
+    "motivation": "想被人留下来，不是因为她有用。",
+    "goal": "在城里读完这一年，别被送回去。",
+    "surface_want": "在城里站住脚，攒够下学期的钱。",
+    "deep_need": "想有人在门口等她，而不是等她干活。",
+    "fear": "被送回去。",
+    "leverage": "苏野一句「要不你回去」，她就闭嘴。",
+    "secret": "她妈住院的事没跟任何人说。",
+    "secret_if_revealed": "苏野会改主意，把她当成负担，而不是留下来的人。",
+    "conflict": "想问又不敢问：问了就没地方住，不问就永远寄人篱下。",
+    "arc": "从躲着看，到敢开口。",
+    "behaviors": [
+      {
+        "trigger": "被问到父母",
+        "reaction": "收碗，端去水池，水开得比平时大。"
+      },
+      {
+        "trigger": "他半夜还没回来",
+        "reaction": "把饭菜扣在锅里温着，不说等。"
+      },
+      {
+        "trigger": "被人夸",
+        "reaction": "先挑自己的错，把话岔开。"
+      }
+    ],
     "anchors": [
-      "不会主动提父母",
-      "难受的时候先收碗"
+      "不会主动提父母。",
+      "难受的时候先收碗。"
     ],
     "lines": [
       "哥，我住了啊。",
-      "你忙你的。"
+      "你忙你的。",
+      "锅里给你留着，凉了自己热。"
+    ],
+    "speech": {
+      "sentence": "句子短，半句，剩下的用动作补；越紧张越少话。",
+      "tic": "「你忙你的」——把人往外推的那句，其实是留人的意思。",
+      "by_relation": [
+        {
+          "to": "苏野",
+          "tone": "客气里带试探，不敢用肯定句"
+        },
+        {
+          "to": "便利店的客人",
+          "tone": "礼貌但短，一句不多说"
+        }
+      ],
+      "interrupt": "被苏野打断就闭嘴，等他说完再接半句",
+      "filler": "「那个……」",
+      "sparring": [
+        "「哥，我住了啊。」",
+        "「住吧。」",
+        "「我不白住，我洗碗。」"
+      ]
+    },
+    "payoffs": [
+      {
+        "kind": "预告",
+        "at": "第 1 章",
+        "what": "她在门牌前停住，没问上面另一个名字"
+      },
+      {
+        "kind": "小兑现",
+        "at": "第 3 章",
+        "what": "她自己把行李搬进里屋，没问他"
+      },
+      {
+        "kind": "大兑现",
+        "at": "第 21 章",
+        "what": "当着苏野的面说「我不走」，代价是把住院的事说出来"
+      }
     ]
   },
   "state": {
@@ -23,6 +87,17 @@
     "power": "",
     "items": [],
     "conditions": []
+  },
+  "voice": {
+    "lexicon": "plain",
+    "swears_in_dialogue": false,
+    "silent_when_aroused": false
+  },
+  "intimacy": {
+    "orientation": "",
+    "preferences": [],
+    "limits": [],
+    "first_exp": ""
   },
   "known": [
     {
@@ -42,5 +117,6 @@
     }
   ],
   "misbeliefs": [],
-  "forbidden_knowledge": []
+  "forbidden_knowledge": [],
+  "appearance": "个头不高，站直了刚够到门框一半。指关节粗，手上常年有洗衣粉的味道。走路很轻，进屋先看地上有没有灰。"
 }

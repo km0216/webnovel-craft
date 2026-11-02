@@ -1,8 +1,26 @@
 {
   "chapter": 1,
   "verdict": "revise",
-  "scores": { "sao_payoff": 2, "opening_hook": 1, "pacing_density": 1, "no_poison_points": 2, "emotion_immersion": 1, "ending_hook": 2, "prose_ai": 1, "pov_discipline": 2, "info_release": 1 },
+  "scores": {
+    "sao_payoff": 2,
+    "opening_hook": 1,
+    "pacing_density": 1,
+    "no_poison_points": 2,
+    "emotion_immersion": 1,
+    "ending_hook": 2,
+    "prose_ai": 1,
+    "pov_discipline": 2,
+    "info_release": 1,
+    "dialogue_life": 1
+  },
   "issues": [
-    { "severity": "minor", "category": "pacing", "evidence": "她把行李箱往墙边一靠", "why": "进门动作写得比情绪多", "fix_hint": "砍一个动作，把她看见门牌的那一下放前面", "blocking": false }
+    {
+      "severity": "minor",
+      "category": "pacing",
+      "evidence": "她把行李箱往墙边一靠",
+      "why": "进门动作写得比情绪多",
+      "fix_hint": "砍一个动作，把她看见门牌的那一下放前面",
+      "blocking": false
+    }
   ]
 }

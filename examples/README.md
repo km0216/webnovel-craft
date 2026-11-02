@@ -2,6 +2,9 @@
 
 三章、两角色、一条伏笔。用来验证链路，也是**建新书时照抄的结构**。
 
+`cards/gan_tang.json` 是一张填满的角色卡（五问 / 行为 / 说话方式 / 兑现齐全），照它填自己的卡；
+卡的门禁：`node scripts/char_check.js --book <书>`。
+
 ```
 book.json                 书配置（平台/篇幅/禁区/阈值/NSFW）
 canon/facts.jsonl         4 条事实，其中 F1 已被 F4 取代（演示「只失效不删」）

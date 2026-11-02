@@ -48,6 +48,18 @@ function main() {
     && f.valid_from_ch <= n
     && (f.valid_until_ch === null || f.valid_until_ch === undefined || f.valid_until_ch >= n);
 
+  // ── 0. 视角人物必须有卡：合同 pov 对不上任何角色卡，等于写手无据可依 ──
+  if (contract && contract.pov) {
+    const povId = String(contract.pov);
+    const known = new Set(chars.map((c) => c.id));
+    const aliases = new Set(['first', 'third', 'third-limited', 'omniscient', 'he', 'she']);
+    if (!known.has(povId) && !aliases.has(povId)) {
+      add('advisory', 'pov-no-card',
+        `合同 pov=${povId} 没有对应的角色卡：给他建一张（人物卡是写手唯一的语感依据）`,
+        '');
+    }
+  }
+
   // ── 1. 视角泄漏：角色不该知道的事出现在本章 ──────────────────
   for (const c of chars) {
     for (const fid of (c.forbidden_knowledge || [])) {

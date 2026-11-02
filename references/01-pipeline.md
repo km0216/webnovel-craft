@@ -8,6 +8,7 @@
 | 步 | 谁做 | 动作 | 产物 | 失败怎么办 |
 |---|---|---|---|---|
 | 0 | **人** | 锁顶层契约：品类 / 平台 / 核心冲突 / 结局 / 主线锚点 / 红线 | `book.json` | 没这个别开写 |
+| 0.5 | **人** + 脚本 | 立人设：每张卡答完五问（`12-character-card.md`），`char_check.js` 过结构 | `canon/characters/*.json` | blocking 不修完不开写 |
 | 1 | 脚本 | `rebuild.js --ch N` 编译最小上下文 | `state/context.md` + `knowledge.json` | 缺合同就补合同 |
 | 2 | 写手 | 只读 `context.md` + 本章合同，按蓝图填正文 | `chapters/chNNN.md` | 不许在草稿阶段 settle |
 | 3 | 脚本 | `output_check.js` 机械门（字数/泄漏/禁区/占位/退化/AI 句式） | 列表 | 有 blocking → 就地改，不算「去 AI 味」 |
@@ -47,14 +48,22 @@
 ## 5. 一次写完一章的最短路径
 
 ```bash
+node scripts/char_check.js    --book <书>                  # 0 卡门（写前一次）
 node scripts/rebuild.js       --book <书> --ch 12          # 1 读上下文
 #   写 chapters/ch012.md                                     2 起草
 node scripts/output_check.js  --book <书> --ch 12          # 3 机械门
 node scripts/continuity_check.js --book <书> --ch 12       # 4 硬层
-#   软审（批 3 接 rubric）                                    5
+node scripts/dialogue_check.js --book <书> --ch 12         # 4.5 对白门（advisory）
+#   软审（reviewer ≠ writer）→ check_report.js               5
 node scripts/settle.js        --book <书> --ch 12 --delta <书>/deltas/ch012.json   # 8
 node scripts/rebuild.js       --book <书> --ch 13          # 9 为下一章准备
+
+# 一卷收尾 / 大改后
+node scripts/blind_test.js    --book <书> --ch 12 --out tmp/dlg.txt
+node scripts/blind_report.js  --in tmp/blind.json --markdown
 ```
+
+**改过正文就不能沿用旧报告**：报告里的 evidence 是逐字绑定，`check_report` 会报「搜不到」，重审一次。
 
 ## 6. 上下文预算
 

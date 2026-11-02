@@ -1,0 +1,1 @@
+{"id":"X1","content":"门槛下压着一封没拆的信","planted_ch":1,"state":"hinted","payoff_window":[3,5],"payoff_signal":"信封上收件人的名字","payoff_ch":null,"evidence":"","history":[{"ch":1,"op":"plant"},{"ch":2,"op":"hint"}]}
